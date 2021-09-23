@@ -10,7 +10,7 @@ class ReviewInLine(admin.TabularInline):
     model = Review
     
 class AnimeAdmin(admin.ModelAdmin):
-    list_display = ( 'anime_name', 'language_type', 'on_hulu', 'on_netflix', 'on_crunchyroll', 'on_funamation', 'added_by' )
+    list_display = ( 'anime_name', 'language_type', 'on_hulu', 'on_netflix', 'on_crunchyroll', 'on_funamation', 'added_by', 'last_updated' )
     inlines = [
         ReviewInLine,
     ]
