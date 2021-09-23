@@ -1,0 +1,1 @@
+web: gunicorn --chdir animesrus animesrus.wsgi --log-file -
