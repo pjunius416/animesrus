@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-from .views import (AnimeListView, AnimeUpdateView, AnimeDetailView, AnimeDeleteView, AnimeCreateView)
+from .views import (AnimeListView, AnimeUpdateView, AnimeDetailView, AnimeDeleteView, AnimeCreateView, 
+                    ReviewListView, ReviewCreateView, ReviewDeleteView, ReviewUpdateView)
 
 urlpatterns = [
     path('<int:pk>/edit/', AnimeUpdateView.as_view(), name='anime_edit'),
@@ -8,5 +9,8 @@ urlpatterns = [
     path('<int:pk>/delete/', AnimeDeleteView.as_view(), name='anime_delete'),
     path('new/', AnimeCreateView.as_view(), name='anime_new'),
     path('', AnimeListView.as_view(), name='anime_list'),
-
+    path('reviews/', ReviewListView.as_view(), name='review_list'),
+    path('reviews/new/', ReviewCreateView.as_view(), name='review_new'),
+    path('reviews/<int:pk>/delete/', ReviewDeleteView.as_view(), name='review_delete'),
+    path('reviews/<int:pk>/edit/', ReviewUpdateView.as_view(), name='review_edit'),
 ]

@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.views.generic import ListView, DetailView
 from .models import models
-from .models import Anime
+from .models import Anime, Review
 from django.urls import reverse_lazy
 
 class AnimeListView(ListView):
@@ -32,3 +32,28 @@ class AnimeCreateView(CreateView):
     def form_valid(self, form):
         form.instance.added_by = self.request.user
         return super().form_valid(form)
+
+#Review Views
+class ReviewListView(ListView):
+    model = Review
+    template_name = 'review_list.html'
+    
+class ReviewCreateView(CreateView):
+    model = Review
+    template_name = 'review_new.html'
+    fields = ('anime_name', 'review', 'author')
+    login_url = 'login'
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+class ReviewDeleteView(DeleteView):
+    model = Review
+    template_name = 'review_delete.html'
+    success_url = reverse_lazy('review_list')
+    
+class ReviewUpdateView(UpdateView):
+    model = Review
+    fields = ('anime_name', 'review', 'author')
+    template_name = 'review_edit.html'

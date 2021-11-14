@@ -10,7 +10,16 @@
   <p>Avaliable On: {{ anime.on_hulu }} | {{ anime.on_netflix }} | {{ anime.on_crunchyroll }} | {{ anime.on_funamation }}</p>
   <p>Last Updated On: {{ anime.last_updated }}</p>
   </div>
+  <div class="card-footer">
+    <span class="font-weight-bold">Reviews:</span>
+    {% for review in anime.reviews.all %}
+      <p>
+        <span class="font-weight-bold">{{ review.author }} &middot;</span>
+        {{ review }}
+      </p>
+    {% endfor %}
+  </div>
 
-  <p><a href="{% url 'anime_edit' anime.pk %}">Edit Anime</a> | <a href="{% url 'anime_delete' anime.pk %}">Delete Anime</a></p>
+  <p><a href="{% url 'anime_edit' anime.pk %}">Edit Anime</a> | <a href="{% url 'anime_delete' anime.pk %}">Delete Anime</a> | <a href="{% url 'review_new' %}">Write Review</a> </p>
   <p>Back to <a href="{% url 'anime_list' %}">Anime List</a>.</p>
 {% endblock content %}

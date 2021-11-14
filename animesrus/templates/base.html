@@ -17,11 +17,11 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
             <li><a href="{% url 'anime_list' %}">Find an Anime |</a></li>
-            <li><a href="{% url 'home' %}">| Anime Reviews |</a></li>
+            <li><a href="{% url 'review_list' %}">| Anime Reviews |</a></li>
         </ul>
         {% if user.is_authenticated %}
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a href="{% url 'home' %}">| Review an Anime | </a></li> 
+          <li class="nav-item"><a href="{% url 'review_new' %}">| Review an Anime | </a></li> 
           <li class="nav-item"><a href="{% url 'anime_new' %}">| Recommend an Anime |</a></li>
         </ul>
       {% endif %}
