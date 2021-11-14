@@ -9,7 +9,7 @@
   <h1 class="display-4">Welcome to AnimesRUs!</h1>
   <p class="lead">Find Animes, Read Reviews, & Share Recommendations</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" role="button">Find an Anime</a>
+    <a class="btn btn-primary btn-lg" a href="{% url 'anime_list' %}" role="button">Find an Anime</a>
   </p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" role="button">Anime Reviews</a>
@@ -19,7 +19,7 @@
     <a class="btn btn-primary btn-lg" role="button">Review an Anime</a>
   </p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" role="button">Recommend an Anime</a>
+    <a class="btn btn-primary btn-lg" a href="{% url 'anime_new' %}" role="button">Recommend an Anime</a>
   </p>
   {% endif %}
 </div>

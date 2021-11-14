@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="anime-entry">
+  <h2>{{ anime.anime_name }}</h2>
+  <p>Added By: {{ anime.added_by}}</p>
+  <p>Wiki Link: {{ anime.wiki_url}}</p>
+  <p>Description: {{ anime.description }}</p>
+  <p>Language Types: {{ anime.language_type }}</p>
+  <p>Avaliable On: {{ anime.on_hulu }} | {{ anime.on_netflix }} | {{ anime.on_crunchyroll }} | {{ anime.on_funamation }}</p>
+  <p>Last Updated On: {{ anime.last_updated }}</p>
+  </div>
+
+  <p><a href="{% url 'anime_edit' anime.pk %}">Edit Anime</a> | <a href="{% url 'anime_delete' anime.pk %}">Delete Anime</a></p>
+  <p>Back to <a href="{% url 'anime_list' %}">Anime List</a>.</p>
+{% endblock content %}

@@ -1,10 +1,12 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 class Anime(models.Model):
     anime_name = models.CharField(max_length=100, blank=False, null=False, default='')
+    wiki_url = models.CharField(max_length=100, blank=False, null=False, default='')
     description = models.TextField()
     language_type = models.CharField(max_length=20, blank=False, null=False, default='')
     on_hulu = models.BooleanField(default='')
@@ -23,6 +25,9 @@ class Anime(models.Model):
 
     def __str__(self):
         return str(self.anime_name)
+    
+    def get_absolute_url(self):
+        return reverse('anime_detail', args=[str(self.id)])
     
 class Review(models.Model):
     anime_name = models.ForeignKey(
