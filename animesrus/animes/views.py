@@ -1,6 +1,9 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.views.generic import ListView, DetailView
+from django.shortcuts import render, redirect
+from .forms import *
 from .models import models
 from .models import Anime, Review
 from django.urls import reverse_lazy
@@ -57,3 +60,23 @@ class ReviewUpdateView(UpdateView):
     model = Review
     fields = ('anime_name', 'review', 'author')
     template_name = 'review_edit.html'
+    
+def request_anime_delete(request):
+    if request.method == 'GET':
+        form = RequestDeleteForm()
+    else:
+        form = RequestDeleteForm(request.POST)
+        if form.is_valid():
+            anime_name = form.cleaned_data['anime_name']
+            email_address = form.cleaned_data['email_address']
+            reason = form.cleaned_data['reason_for_deletion']
+            message = "Anime to be Deleted " + anime_name + "\nDeletion Requested by: " + email_address + "\nReason For Deletion: " + reason 
+            try:
+                send_mail(anime_name, message, email_address, ['localhost'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('request_sent')
+    return render(request, 'request_delete.html', {'form': form})
+
+def deletion_request_sent(request):
+    return render(request, 'request_sent.html')

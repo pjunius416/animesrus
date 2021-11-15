@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body id="background" style="background-color:rgb(226, 221, 155)"></body>
+    <h1>Request Anime Deletion</h1>
+    <form action="" method="post">{% csrf_token %}
+      {{ form.as_p }}
+    <button class="btn btn-info ml-2" type="submit">Send Request</button>
+</form>
+{% endblock content %}

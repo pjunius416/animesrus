@@ -22,7 +22,7 @@
         <h4>By: {{ review.author}}</h4>
       </div>
       <br>
-      {% if user.is_authenticated %}
+      {% if user.is_superuser or user.is_authenticated and user == review.author %}
       <div class="wrapper" style="display: inline-block text-align: center position: absolute">
         <a href="{% url 'review_edit' review.pk %}" class="btn btn-info btn-lg" style="width: 10em">Edit Review</a>
         <a href="{% url 'review_delete' review.pk %}" class="btn btn-danger btn-lg" style="width: 10em">Delete Review</a>

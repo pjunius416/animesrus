@@ -9,7 +9,7 @@
   <div class="wrapper" style="display: inline-block text-align: center position: absolute"></div>
     <a href="{% url 'anime_new' %}" class="btn btn-primary btn-lg active ml-2" style="width: 12em">Recommend an Anime</a>
     <a href="{% url 'review_new' %}" class="btn btn-primary btn-lg active ml-2 " style="width: 12em">Write Review</a>
-    <a href="{% url 'review_list' %}" class="btn btn-primary btn-lg active ml-2" style="width: 12em">Go to Reviews</a>
+    <a href="{% url 'request_delete' %}" class="btn btn-primary btn-lg active ml-2" style="width: 12em">Request Anime Deletion</a>
     <a href="{% url 'home' %}" class="btn btn-primary btn-lg active ml-2" style="width: 12em">Back to Home</a>
 {%endif%}
 </div>
@@ -29,8 +29,10 @@
       {% if user.is_authenticated %}
       <div class="wrapper" style="display: inline-block text-align: center position: absolute">
       <a href="{% url 'anime_detail' anime.pk %}" class="btn btn-primary" style="width: 10em">See More Details</a>
+      {% if user.is_superuser %}
       <a href="{% url 'anime_edit' anime.pk %}" class="btn btn-info" style="width: 10em">Edit Anime</a>
       <a href="{% url 'anime_delete' anime.pk %}" class="btn btn-danger" style="width: 10em">Delete Anime</a>
+      {% endif %}
     </div>
       {% endif %}
     </div>
