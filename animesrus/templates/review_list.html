@@ -3,6 +3,16 @@
 {% block title %}Anime Reviews{% endblock title %}
 {% load static %}
 {% block content %}
+<div class="jumbotron">
+  <h1 class="text-center">Reviews</h1>
+  {% if user.is_authenticated %}
+  <div class="wrapper" style="display: inline-block text-align: center position: absolute"></div>
+    <a href="{% url 'review_new' %}" class="btn btn-primary btn-lg active ml-2 " style="width: 12em">Write Review</a>
+    <a href="{% url 'anime_list' %}" class="btn btn-primary btn-lg active ml-2" style="width: 12em">Go to Animes</a>
+    <a href="{% url 'anime_new' %}" class="btn btn-primary btn-lg active ml-2" style="width: 12em">Recommend an Anime</a>
+    <a href="{% url 'home' %}" class="btn btn-primary btn-lg active ml-2" style="width: 12em">Back to Home</a>
+{%endif%}
+</div>
 <body id="background" style="background-image: url('{% static "images/animes.jpg" %}');"></body>
   {% for review in object_list %}
     <div class="card">
