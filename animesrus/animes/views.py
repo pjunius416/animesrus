@@ -72,7 +72,7 @@ def request_anime_delete(request):
             reason = form.cleaned_data['reason_for_deletion']
             message = "Anime to be Deleted " + anime_name + "\nDeletion Requested by: " + email_address + "\nReason For Deletion: " + reason 
             try:
-                send_mail(anime_name, message, email_address, ['localhost'])
+                send_mail(anime_name, message, email_address, ['animesrus8210@gmail.com'])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('request_sent')
