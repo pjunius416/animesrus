@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<body id="background" style="background-color:rgb(226, 221, 155)"></body>
 <div class="anime-entry">
   <h2>{{ anime.anime_name }}</h2>
-  <p>Added By: {{ anime.added_by}}</p>
-  <p>Wiki Link: {{ anime.wiki_url}}</p>
+  <p>Wiki Link: <a href="{{ anime.wiki_url }}" target="_blank" stretched-link>{{ anime.wiki_url}}</a></p>
   <p>Description: {{ anime.description }}</p>
   <p>Language Types: {{ anime.language_type }}</p>
-  <p>Avaliable On: {{ anime.on_hulu }} | {{ anime.on_netflix }} | {{ anime.on_crunchyroll }} | {{ anime.on_funamation }}</p>
-  <p>Last Updated On: {{ anime.last_updated }}</p>
+  <p>Hulu: {{ anime.on_hulu }} | Netflix: {{ anime.on_netflix }} | Crunchyroll: {{ anime.on_crunchyroll }} | Funamation: {{ anime.on_funamation }}</p>
+  <p>Last Updated On: {{ anime.last_updated }} by {{ anime.added_by}}</p>
   </div>
   <div class="card-footer">
     <span class="font-weight-bold">Reviews:</span>
